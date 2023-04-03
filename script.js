@@ -1,5 +1,5 @@
-let a;
-let b;
+let a = 0;
+let b = "";
 let operator;
 
 let displayValue = "";
@@ -7,12 +7,15 @@ let displayValue = "";
 // Add EventListener to "=" button
 const equalButton = document.querySelector("#equal");
 equalButton.addEventListener("click", () => {
-  console.log(operate(a, operator, b));
-  displayValue = `${operate(a, operator, b)}`;
+  b = +b;
+
+  a = operate(a, operator, b);
+  console.log(a);
+  displayValue = `${a}`;
   console.log(displayValue);
   console.log(typeof displayValue);
-  a = 0;
-  b = 0;
+  b = "";
+
   display();
 });
 
@@ -21,18 +24,20 @@ const opButtons = document.querySelectorAll("#plus, #minus, #multi, #divide");
 opButtons.forEach((opButton) => {
   opButton.addEventListener("click", () => {
     operator = opButton.textContent;
+    // if (displayValue === "" && operator === "-") {
+    //   a = operator;
+    //   console.log(a);
+    //   console.log(typeof a);
+    //   }else {
     if (/\D/g.test(displayValue)) {
+      b = +b;
       a = operate(a, operator, b);
       displayValue = `${a}`;
-    } else {
-      a = +displayValue;
+      b = 0;
     }
-    console.log(/\D/g.test(displayValue));
+    // }
+
     displayValue += operator;
-    console.log(a);
-    console.log(operator);
-    console.log(displayValue);
-    console.log(typeof displayValue);
     display();
   });
 });
@@ -41,15 +46,27 @@ opButtons.forEach((opButton) => {
 for (let i = 0; i < 10; i++) {
   const numButton = document.querySelector(`#key${i}`);
   numButton.addEventListener("click", () => {
+    // if (a === 0) {
+    //   a = i;
+    //   a = +a;
+    //   displayValue += i;
+
+    //   console.log(a);
+    //   console.log(typeof a);
+    //   console.log(displayValue);
+    //   console.log(typeof displayValue);
+    // } else {
+
     if (/\D/g.test(displayValue)) {
-      b = i;
+      b += `${i}`;
       displayValue += `${i}`;
       console.log(b);
     } else {
-      displayValue = `${i}`;
+      displayValue += `${i}`;
+      a = +displayValue;
+      console.log(a);
     }
-    console.log(displayValue);
-    console.log(typeof displayValue);
+    // }
     display();
   });
 }
