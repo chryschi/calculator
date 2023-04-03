@@ -1,8 +1,15 @@
-console.log("test");
 let operand1;
 let operand2;
 let operator;
 
+function operate(a, operator, b) {
+  if (operator === "+") return add(a, b);
+  else if (operator === "-") return subtract(a, b);
+  else if (operator === "*") return multiply(a, b);
+  else if (operator === "/") return divide(a, b);
+}
+
+// Basic mathematical functions
 function add(a, b) {
   return a + b;
 }
