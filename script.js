@@ -1,6 +1,6 @@
 let a;
-let operand2;
 let b;
+let operator;
 
 function operate(a, operator, b) {
   if (operator === "+") return add(a, b);
