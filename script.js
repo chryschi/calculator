@@ -20,13 +20,14 @@ equalButton.addEventListener("click", () => {
 const opButtons = document.querySelectorAll("#plus, #minus, #multi, #divide");
 opButtons.forEach((opButton) => {
   opButton.addEventListener("click", () => {
+    operator = opButton.textContent;
     if (/\D/g.test(displayValue)) {
       a = operate(a, operator, b);
+      displayValue = `${a}`;
     } else {
       a = +displayValue;
     }
     console.log(/\D/g.test(displayValue));
-    operator = opButton.textContent;
     displayValue += operator;
     console.log(a);
     console.log(operator);
