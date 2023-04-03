@@ -8,7 +8,11 @@ let displayValue = "";
 const equalButton = document.querySelector("#equal");
 equalButton.addEventListener("click", () => {
   console.log(operate(a, operator, b));
-  displayValue = operate(a, operator, b);
+  displayValue = `${operate(a, operator, b)}`;
+  console.log(displayValue);
+  console.log(typeof displayValue);
+  a = 0;
+  b = 0;
   display();
 });
 
@@ -16,11 +20,18 @@ equalButton.addEventListener("click", () => {
 const opButtons = document.querySelectorAll("#plus, #minus, #multi, #divide");
 opButtons.forEach((opButton) => {
   opButton.addEventListener("click", () => {
-    a = displayValue;
+    if (/\D/g.test(displayValue)) {
+      a = operate(a, operator, b);
+    } else {
+      a = +displayValue;
+    }
+    console.log(/\D/g.test(displayValue));
     operator = opButton.textContent;
-    displayValue += `${operator}`;
-    console.log(operator);
+    displayValue += operator;
     console.log(a);
+    console.log(operator);
+    console.log(displayValue);
+    console.log(typeof displayValue);
     display();
   });
 });
@@ -29,14 +40,15 @@ opButtons.forEach((opButton) => {
 for (let i = 0; i < 10; i++) {
   const numButton = document.querySelector(`#key${i}`);
   numButton.addEventListener("click", () => {
-    if (/[\+\-\*\/]{1,}$/.test(displayValue)) {
+    if (/\D/g.test(displayValue)) {
       b = i;
-      displayValue += i;
+      displayValue += `${i}`;
       console.log(b);
     } else {
-      displayValue = i;
+      displayValue = `${i}`;
     }
-
+    console.log(displayValue);
+    console.log(typeof displayValue);
     display();
   });
 }
