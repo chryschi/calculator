@@ -2,16 +2,26 @@ let a;
 let b;
 let operator;
 
-let displayValue;
+let displayValue = "";
+
+// Add EventListener to "=" button
+const equalButton = document.querySelector("#equal");
+equalButton.addEventListener("click", () => {
+  console.log(operate(a, operator, b));
+  displayValue = operate(a, operator, b);
+  display();
+});
 
 //Add EventListener to operator buttons
 const opButtons = document.querySelectorAll("#plus, #minus, #multi, #divide");
 opButtons.forEach((opButton) => {
   opButton.addEventListener("click", () => {
-    operator = opButton.textContent;
-    console.log(operator);
     a = displayValue;
+    operator = opButton.textContent;
+    displayValue += `${operator}`;
+    console.log(operator);
     console.log(a);
+    display();
   });
 });
 
@@ -19,7 +29,14 @@ opButtons.forEach((opButton) => {
 for (let i = 0; i < 10; i++) {
   const numButton = document.querySelector(`#key${i}`);
   numButton.addEventListener("click", () => {
-    displayValue = i;
+    if (/[\+\-\*\/]{1,}$/.test(displayValue)) {
+      b = i;
+      displayValue += i;
+      console.log(b);
+    } else {
+      displayValue = i;
+    }
+
     display();
   });
 }
