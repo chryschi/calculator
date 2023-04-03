@@ -33,7 +33,7 @@ opButtons.forEach((opButton) => {
       b = +b;
       a = operate(a, operator, b);
       displayValue = `${a}`;
-      b = 0;
+      b = "";
     }
     // }
 
