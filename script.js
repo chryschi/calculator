@@ -4,6 +4,17 @@ let operator;
 
 let displayValue;
 
+//Add EventListener to operator buttons
+const opButtons = document.querySelectorAll("#plus, #minus, #multi, #divide");
+opButtons.forEach((opButton) => {
+  opButton.addEventListener("click", () => {
+    operator = opButton.textContent;
+    console.log(operator);
+    a = displayValue;
+    console.log(a);
+  });
+});
+
 //Add EventListener to number buttons
 for (let i = 0; i < 10; i++) {
   const numButton = document.querySelector(`#key${i}`);
