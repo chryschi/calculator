@@ -11,7 +11,8 @@ equalButton.addEventListener("click", () => {
     b = a;
     a = operate(a, operator, b);
     displayValue = `${a}`;
-    b = "";
+    // b = "";
+    console.log("hoo");
   } else if (b === "" && operator === "") {
     displayValue = `${a}`;
     console.log("yei");
@@ -22,9 +23,10 @@ equalButton.addEventListener("click", () => {
     displayValue = `${a}`;
     console.log(displayValue);
     console.log(typeof displayValue);
-    b = "";
+    console.log("wah");
   }
   display();
+  displayValue = "";
 });
 
 //Add EventListener to operator buttons
@@ -46,12 +48,13 @@ opButtons.forEach((opButton) => {
         console.log("b leer");
       }
     } else if (displayValue === "") {
-      displayValue = "0";
+      displayValue = `${a}`;
     }
 
     operator = opButton.textContent;
     displayValue += operator;
     display();
+    b = "";
   });
 });
 
