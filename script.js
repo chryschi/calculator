@@ -4,6 +4,16 @@ let operator = "";
 
 let displayValue = "";
 
+//Add EventListener to "Clear" Button
+const clearButton = document.querySelector("#clear");
+clearButton.addEventListener("click", () => {
+  a = 0;
+  b = "";
+  operator = "";
+  displayValue = "";
+  display();
+});
+
 // Add EventListener to "=" button
 const equalButton = document.querySelector("#equal");
 equalButton.addEventListener("click", () => {
