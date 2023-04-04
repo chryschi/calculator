@@ -30,11 +30,21 @@ opButtons.forEach((opButton) => {
     //   console.log(typeof a);
     //   }else {
     if (/\D/g.test(displayValue)) {
-      b = +b;
-      a = operate(a, operator, b);
-      displayValue = `${a}`;
-      b = "";
+      if (b === "") {
+        displayValue = `${a}`;
+      } else {
+        b = +b;
+        console.log("hallo");
+        console.log(b);
+        console.log(typeof b);
+        a = operate(a, operator, b);
+        displayValue = `${a}`;
+        b = "";
+      }
+    } else if (displayValue === "") {
+      displayValue = "0";
     }
+
     // }
 
     displayValue += operator;
