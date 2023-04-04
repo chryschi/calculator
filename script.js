@@ -8,14 +8,12 @@ let displayValue = "";
 const equalButton = document.querySelector("#equal");
 equalButton.addEventListener("click", () => {
   b = +b;
-
   a = operate(a, operator, b);
   console.log(a);
   displayValue = `${a}`;
   console.log(displayValue);
   console.log(typeof displayValue);
   b = "";
-
   display();
 });
 
@@ -23,11 +21,6 @@ equalButton.addEventListener("click", () => {
 const opButtons = document.querySelectorAll("#plus, #minus, #multi, #divide");
 opButtons.forEach((opButton) => {
   opButton.addEventListener("click", () => {
-    // if (displayValue === "" && operator === "-") {
-    //   a = operator;
-    //   console.log(a);
-    //   console.log(typeof a);
-    //   }else {
     if (/\D/g.test(displayValue)) {
       if (b === "") {
         displayValue = `${a}`;
@@ -46,7 +39,6 @@ opButtons.forEach((opButton) => {
       displayValue = "0";
     }
 
-    // }
     operator = opButton.textContent;
     displayValue += operator;
     display();
@@ -57,17 +49,6 @@ opButtons.forEach((opButton) => {
 for (let i = 0; i < 10; i++) {
   const numButton = document.querySelector(`#key${i}`);
   numButton.addEventListener("click", () => {
-    // if (a === 0) {
-    //   a = i;
-    //   a = +a;
-    //   displayValue += i;
-
-    //   console.log(a);
-    //   console.log(typeof a);
-    //   console.log(displayValue);
-    //   console.log(typeof displayValue);
-    // } else {
-
     if (/\D/g.test(displayValue)) {
       b += `${i}`;
       displayValue += `${i}`;
@@ -77,7 +58,7 @@ for (let i = 0; i < 10; i++) {
       a = +displayValue;
       console.log(a);
     }
-    // }
+
     display();
   });
 }
