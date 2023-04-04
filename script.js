@@ -1,6 +1,6 @@
 let a = 0;
 let b = "";
-let operator;
+let operator = "";
 
 let displayValue = "";
 
@@ -23,7 +23,6 @@ equalButton.addEventListener("click", () => {
 const opButtons = document.querySelectorAll("#plus, #minus, #multi, #divide");
 opButtons.forEach((opButton) => {
   opButton.addEventListener("click", () => {
-    operator = opButton.textContent;
     // if (displayValue === "" && operator === "-") {
     //   a = operator;
     //   console.log(a);
@@ -32,6 +31,7 @@ opButtons.forEach((opButton) => {
     if (/\D/g.test(displayValue)) {
       if (b === "") {
         displayValue = `${a}`;
+        console.log("b leer");
       } else {
         b = +b;
         console.log("hallo");
@@ -40,13 +40,14 @@ opButtons.forEach((opButton) => {
         a = operate(a, operator, b);
         displayValue = `${a}`;
         b = "";
+        console.log("b leer");
       }
     } else if (displayValue === "") {
       displayValue = "0";
     }
 
     // }
-
+    operator = opButton.textContent;
     displayValue += operator;
     display();
   });
