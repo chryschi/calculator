@@ -7,13 +7,23 @@ let displayValue = "";
 // Add EventListener to "=" button
 const equalButton = document.querySelector("#equal");
 equalButton.addEventListener("click", () => {
-  b = +b;
-  a = operate(a, operator, b);
-  console.log(a);
-  displayValue = `${a}`;
-  console.log(displayValue);
-  console.log(typeof displayValue);
-  b = "";
+  if (b === "" && operator !== "") {
+    b = a;
+    a = operate(a, operator, b);
+    displayValue = `${a}`;
+    b = "";
+  } else if (b === "" && operator === "") {
+    displayValue = `${a}`;
+    console.log("yei");
+  } else {
+    b = +b;
+    a = operate(a, operator, b);
+    console.log(a);
+    displayValue = `${a}`;
+    console.log(displayValue);
+    console.log(typeof displayValue);
+    b = "";
+  }
   display();
 });
 
@@ -54,9 +64,15 @@ for (let i = 0; i < 10; i++) {
       displayValue += `${i}`;
       console.log(b);
     } else {
+      // if (operator === "") {
+      //   displayValue = `${i}`;
+      //   a = +displayValue;
+      //   console.log(a);
+      // } else {
       displayValue += `${i}`;
       a = +displayValue;
       console.log(a);
+      // }
     }
 
     display();
