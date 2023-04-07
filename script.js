@@ -92,6 +92,13 @@ for (let i = 0; i < 10; i++) {
   });
 }
 
+//Function for rounding decimals preventing overflow
+function round(num) {
+  const rounded = Math.round(num * 10 ** 6) / 10 ** 6;
+  console.log(rounded);
+  return rounded;
+}
+
 //Function for displaying stored value
 function display() {
   const display = document.querySelector("#display");
@@ -100,10 +107,10 @@ function display() {
 
 //Operator function
 function operate(a, operator, b) {
-  if (operator === "+") return add(a, b);
-  else if (operator === "-") return subtract(a, b);
-  else if (operator === "*") return multiply(a, b);
-  else if (operator === "/") return divide(a, b);
+  if (operator === "+") return round(add(a, b));
+  else if (operator === "-") return round(subtract(a, b));
+  else if (operator === "*") return round(multiply(a, b));
+  else if (operator === "/") return round(divide(a, b));
 }
 
 // Basic mathematical functions
@@ -123,5 +130,6 @@ function divide(a, b) {
   if (b == 0) {
     return "LOL, you kidding?";
   }
+  console.log(a / b);
   return a / b;
 }
