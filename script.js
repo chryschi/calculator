@@ -4,6 +4,22 @@ let operator = "";
 
 let displayValue = "";
 
+//Add EventListener to "." Button
+const decimalButton = document.querySelector("#keyDecimal");
+decimalButton.addEventListener("click", () => {
+  displayValue += ".";
+  if (/[\+\-\/\*]/g.test(displayValue)) {
+    b += ".";
+    console.log(b);
+    console.log("yeah");
+  } else {
+    a = +displayValue;
+    console.log(a);
+    console.log("hi");
+  }
+  display();
+});
+
 //Add EventListener to "Clear" Button
 const clearButton = document.querySelector("#clear");
 clearButton.addEventListener("click", () => {
@@ -43,7 +59,7 @@ equalButton.addEventListener("click", () => {
 const opButtons = document.querySelectorAll("#plus, #minus, #multi, #divide");
 opButtons.forEach((opButton) => {
   opButton.addEventListener("click", () => {
-    if (/\D/g.test(displayValue)) {
+    if (/[\+\-\/\*]/g.test(displayValue)) {
       if (b === "") {
         displayValue = `${a}`;
         console.log("b leer");
@@ -72,7 +88,7 @@ opButtons.forEach((opButton) => {
 for (let i = 0; i < 10; i++) {
   const numButton = document.querySelector(`#key${i}`);
   numButton.addEventListener("click", () => {
-    if (/\D/g.test(displayValue)) {
+    if (/[\+\-\/\*]/g.test(displayValue)) {
       b += `${i}`;
       displayValue += `${i}`;
       console.log(b);
