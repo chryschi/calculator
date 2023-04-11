@@ -20,6 +20,10 @@ decimalButton.addEventListener("click", () => {
   display();
 });
 
+// if (/[\.]/g.test(displayValue)) {
+//   decimalButton.removeEventListener
+// }
+
 //Add EventListener to "Clear" Button
 const clearButton = document.querySelector("#clear");
 clearButton.addEventListener("click", () => {
