@@ -1,3 +1,12 @@
+:root {
+  --dark-blue: #161a24;
+  --ashy-blue: #3b518d;
+  --soft-blue: #7994ce;
+  --soft-green: #cbf1d5;
+  --crystal-blue: #abc8e9;
+  --dorment-blue: #cde4ff;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -14,7 +23,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: aquamarine;
+  background-color: var(--dark-blue);
+  color: var(--dorment-blue);
   font-family: sans-serif;
   text-align: center;
 }
@@ -22,6 +32,8 @@ body {
 header {
   padding: 20px 0;
   width: 100%;
+  font-family: "Lato";
+  font-size: 28px;
 }
 
 main {
@@ -30,9 +42,9 @@ main {
 }
 
 #calculator {
-  background-color: black;
+  background-color: #354674;
   font-size: 40px;
-
+  box-shadow: inset 1em #161a24;
   width: 406px;
   height: 618px;
   padding: 14px;
@@ -45,9 +57,8 @@ main {
 }
 
 #display {
-  background-color: blueviolet;
-  color: azure;
-
+  background-color: var(--crystal-blue);
+  color: var(--dark-blue);
   box-sizing: border-box;
   width: 406px;
   height: 108px;
@@ -85,11 +96,29 @@ main {
 button {
   font-size: 24px;
   font-family: sans-serif;
+  background: linear-gradient(var(--dark-blue), var(--ashy-blue));
+  color: var(--dorment-blue);
 
   margin: 0;
   border: none;
   width: 100px;
   height: 100px;
+}
+
+button:hover:enabled {
+  cursor: pointer;
+  background: linear-gradient(var(--dark-blue), var(--soft-blue));
+}
+
+button:active:enabled {
+  background: linear-gradient(var(--ashy-blue), var(--soft-green));
+  mix-blend-mode: lighten;
+}
+
+button:disabled,
+button[disabled] {
+  background: #313f69;
+  color: var(--soft-blue);
 }
 
 #keySign {
